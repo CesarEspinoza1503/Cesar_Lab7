@@ -13,8 +13,9 @@ public:
 	string getUser();
 	void setUser(string);
 	void setCorreo(string);
-	void setPass(char*);
-	char* getPass();
+	string getCorreo();
+	void setPass(string);
+	string getPass();
 
 	db_administrador();
 	~db_administrador();

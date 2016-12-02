@@ -9,14 +9,16 @@ class usuario
 protected:
 	string user_name;
     string correo;
-    char* password;
+    string password;
 
 public:
 	virtual string getUser();
 	virtual void setUser(string);
+	virtual string getCorreo();
+	
 	virtual void setCorreo(string);
-	virtual void setPass(char*);
-	virtual char* getPass();
+	virtual void setPass(string);
+	virtual string getPass();
 	usuario();
 	~usuario();
 	

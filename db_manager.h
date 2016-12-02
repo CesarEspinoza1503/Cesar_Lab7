@@ -5,16 +5,17 @@
 class db_manager : public usuario
 {
 private:
-	double sueldo;
+	string sueldo;
 public:
-	double getSueldo();
-	void setSueldo(double);
+	string getSueldo();
+	void setSueldo(string);
 
 	string getUser();
 	void setUser(string);
 	void setCorreo(string);
-	void setPass(char*);
-	char* getPass();
+	string getCorreo();
+	void setPass(string);
+	string getPass();
 	db_manager();
 	~db_manager();
 	

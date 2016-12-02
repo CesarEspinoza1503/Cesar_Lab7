@@ -22,19 +22,23 @@ void db_supervisor::setCorreo(string pCorreo){
 	correo = pCorreo;
 }
 
-void db_supervisor::setPass(char* pPass){
+void db_supervisor::setPass(string pPass){
 	password = pPass;
 }
 
 
-int db_supervisor::getCont(){
-	return cont;
+string db_supervisor::getSCont(){
+	s_cont = cont + "";
+	return s_cont;
 }
 
 void db_supervisor::setCont(){
 	cont ++;
 }
 
-char* db_supervisor::getPass(){
+string db_supervisor::getPass(){
 	return password;
+}
+string db_supervisor::getCorreo(){
+	return correo;
 }

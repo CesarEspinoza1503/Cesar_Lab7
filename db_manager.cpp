@@ -20,17 +20,21 @@ void db_manager::setCorreo(string pCorreo){
 	correo = pCorreo;
 }
 
-void db_manager::setPass(char* pPass){
+void db_manager::setPass(string pPass){
 	password = pPass;
 }
-void db_manager::setSueldo(double pSueldo){
+void db_manager::setSueldo(string pSueldo){
 	sueldo = pSueldo;
 }
 
-double db_manager::getSueldo(){
+string db_manager::getSueldo(){
 	return sueldo;
 }
 
-char* db_manager::getPass(){
+string db_manager::getPass(){
 	return password;
+}
+
+string db_manager::getCorreo(){
+	return correo;
 }

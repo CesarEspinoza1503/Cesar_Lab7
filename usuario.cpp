@@ -18,10 +18,14 @@ void usuario::setCorreo(string pCorreo){
 	correo = pCorreo;
 }
 
-void usuario::setPass(char* pPass){
+void usuario::setPass(string pPass){
 	password = pPass;
 }
 
-char* usuario::getPass(){
+string usuario::getPass(){
 	return password;
+}
+
+string usuario::getCorreo(){
+	return correo;
 }

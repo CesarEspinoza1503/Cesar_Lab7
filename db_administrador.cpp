@@ -20,7 +20,7 @@ void db_administrador::setCorreo(string pCorreo){
 	correo = pCorreo;
 }
 
-void db_administrador::setPass(char* pPass){
+void db_administrador::setPass(string pPass){
 	password = pPass;
 }
 
@@ -32,6 +32,10 @@ void db_administrador::setFecha(string pFecha){
 	fecha_entrada = pFecha;
 }
 
-char* db_administrador::getPass(){
+string db_administrador::getPass(){
 	return password;
+}
+
+string db_administrador::getCorreo(){
+	return correo;
 }

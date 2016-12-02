@@ -7,17 +7,20 @@ class db_supervisor : public usuario
 {
 private:
 	int cont;
+	string s_cont;
 public:
 	db_supervisor();
 	~db_supervisor();
-	int getCont();
+	string getSCont();
+
 	void setCont();
 
 	string getUser();
 	void setUser(string);
 	void setCorreo(string);
-	void setPass(char*);
-	char* getPass();
+	string getCorreo();
+	void setPass(string);
+	string getPass();
 
 };
 

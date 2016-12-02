@@ -18,19 +18,23 @@ void db_intern::setCorreo(string pCorreo){
 	correo = pCorreo;
 }
 
-void db_intern::setPass(char* pPass){
+void db_intern::setPass(string pPass){
 	password = pPass;
 }
 
-int db_intern::getDias(){
+string db_intern::getDias(){
 	return dias;
 }
 
-void db_intern::setDias(int pDias){
+void db_intern::setDias(string pDias){
 	dias = pDias;
 }
 
 
-char* db_intern::getPass(){
+string db_intern::getPass(){
 	return password;
+}
+
+string db_intern::getCorreo(){
+	return correo;
 }
