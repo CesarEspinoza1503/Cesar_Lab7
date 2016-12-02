@@ -6,7 +6,7 @@
 class db_supervisor : public usuario
 {
 private:
-	int cont = 0;
+	int cont;
 public:
 	db_supervisor();
 	~db_supervisor();

@@ -21,3 +21,7 @@ void usuario::setCorreo(string pCorreo){
 void usuario::setPass(char* pPass){
 	password = pPass;
 }
+
+char* usuario::getPass(){
+	return password;
+}

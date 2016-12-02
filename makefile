@@ -1,5 +1,4 @@
 main: main.o db_administrador.o db_supervisor.o db_intern.o db_manager.o usuario.o
-
 	g++ main.o db_administrador.o db_supervisor.o db_intern.o db_manager.o usuario.o -o main
 
 

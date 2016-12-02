@@ -21,18 +21,16 @@ void db_intern::setCorreo(string pCorreo){
 void db_intern::setPass(char* pPass){
 	password = pPass;
 }
-void db_intern::setSueldo(double pSueldo){
-	sueldo = pSueldo;
-}
-
-double db_intern::getSueldo(){
-	return sueldo;
-}
 
 int db_intern::getDias(){
 	return dias;
 }
 
-void db_intern::setDias(pDias){
+void db_intern::setDias(int pDias){
 	dias = pDias;
+}
+
+
+char* db_intern::getPass(){
+	return password;
 }

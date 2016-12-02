@@ -10,7 +10,7 @@ private:
 
 public:
 	int getDias();
-	void setDias();
+	void setDias(int);
 
 	string getUser();
 	void setUser(string);

@@ -31,3 +31,7 @@ string db_administrador::getFecha(){
 void db_administrador::setFecha(string pFecha){
 	fecha_entrada = pFecha;
 }
+
+char* db_administrador::getPass(){
+	return password;
+}

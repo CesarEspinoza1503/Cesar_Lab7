@@ -8,7 +8,7 @@ private:
 	double sueldo;
 public:
 	double getSueldo();
-	void setSueldo();
+	void setSueldo(double);
 
 	string getUser();
 	void setUser(string);

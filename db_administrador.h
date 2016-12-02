@@ -1,6 +1,7 @@
 #ifndef DB_ADMNIISTRADOR
 #define DB_ADMNIISTRADOR
 #include "usuario.h"
+#include <string>
 
 class db_administrador : public usuario
 {

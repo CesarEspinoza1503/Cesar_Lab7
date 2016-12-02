@@ -2,7 +2,7 @@
 
 
 db_supervisor::db_supervisor(){
-
+	cont = 0;
 }
 
 db_supervisor::~db_supervisor(){
@@ -25,13 +25,7 @@ void db_supervisor::setCorreo(string pCorreo){
 void db_supervisor::setPass(char* pPass){
 	password = pPass;
 }
-void db_supervisor::setSueldo(double pSueldo){
-	sueldo = pSueldo;
-}
 
-double db_supervisor::getSueldo(){
-	return sueldo;
-}
 
 int db_supervisor::getCont(){
 	return cont;
@@ -39,4 +33,8 @@ int db_supervisor::getCont(){
 
 void db_supervisor::setCont(){
 	cont ++;
+}
+
+char* db_supervisor::getPass(){
+	return password;
 }

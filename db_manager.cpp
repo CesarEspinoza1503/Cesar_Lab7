@@ -1,4 +1,5 @@
 #include "db_manager.h"
+
 db_manager::db_manager(){
 
 }
@@ -30,3 +31,6 @@ double db_manager::getSueldo(){
 	return sueldo;
 }
 
+char* db_manager::getPass(){
+	return password;
+}
