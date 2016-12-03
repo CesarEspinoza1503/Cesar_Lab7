@@ -14,7 +14,6 @@ void leerTxt(char*, vector<usuario*>*);
 
 int main(int argc, char const *argv[])
 {
-	ofstream archivo;
 
 	vector<usuario*> admins;
 	vector<usuario*> interns;
@@ -279,6 +278,51 @@ int main(int argc, char const *argv[])
 		//cout<<admins.at(0)->getCorreo()<<endl;
 
 	} while (opt != 0);
+	ofstream archive_exp;
+	archive_exp.open("Manager.txt");
+
+	if (managers.size() != 0)
+	{
+		for (int i = 0; i < managers.size(); ++i)
+		{
+			db_manager* mana = dynamic_cast<db_manager*>(managers.at(i));
+			archive_exp << managers.at(i)->getUser() <<endl;
+			archive_exp << managers.at(i)->getCorreo() <<endl;
+			archive_exp << managers.at(i)->getPass() <<endl;
+			archive_exp << mana->getSueldo() <<endl;
+		}
+	}
+	archive_exp.close();
+
+	archive_exp.open("Supervisor.txt");
+	if (supervisors.size() != 0)
+	{
+		for (int i = 0; i < supervisors.size(); ++i)
+		{
+			db_supervisor* super = dynamic_cast<db_supervisor*>(supervisors.at(i));
+			archive_exp << supervisors.at(i)->getUser()<<endl;
+			archive_exp << supervisors.at(i)->getCorreo()<<endl;
+			archive_exp << supervisors.at(i)->getPass()<<endl;
+			archive_exp << super->getSCont() <<endl;
+		}
+	}
+	archive_exp.close();
+
+
+	archive_exp.open("Internos.txt");
+	if (interns.size() != 0)
+	{
+		for (int i = 0; i < interns.size(); ++i)
+		{
+			db_intern* interno = dynamic_cast<db_intern*>(interns.at(i));
+			archive_exp << interns.at(i)->getUser()<<endl;
+			archive_exp << interns.at(i)->getCorreo()<<endl;
+			archive_exp << interns.at(i)->getPass()<<endl;
+			archive_exp << interno->getDias() <<endl;
+		}
+	}
+	archive_exp.close();
+
 	return 0;
 }
 
