@@ -26,16 +26,16 @@ int main(int argc, char const *argv[])
 	char* password;
 
 	leerTxt("Administrador.txt", &admins);
-	cout<<"TAMAÑO: "<<admins.size();
-	admins.at(0)->getCorreo();
+	cout<<admins.at(0)->getUser()<<endl<< admins.at(0)->getPass()<< endl;
 	do
 	{
 		cout<<"		LOG IN"<<endl<<"		---------------------"<<endl;
 		cout<<"		Username: "<<endl;
-		cin>> use;
+		cin >> use;
 		cout<<"		Password: "<<endl;
 		cin >> password;
-		if(admins.at(0)->getUser() == use && admins.at(0)->getPass() == password)
+
+		if((admins.at(0)->getUser() == use) && (admins.at(0)->getPass() == password))
 		{
 			int admin_opt;
 
@@ -63,10 +63,11 @@ int main(int argc, char const *argv[])
 					manager->setPass(pass);
 					manager->setCorreo(correo);
 					manager->setSueldo(sueldo);
+					managers.push_back(manager);
 				}
 				if (admin_opt == 2)
 				{
-
+					db_intern* interno = new db_intern();
 					string dias;
 					cout<<"		INTERNO"<<endl;
 					cout<<"Ingrese Nombre de usuario: "<<endl;
@@ -77,10 +78,16 @@ int main(int argc, char const *argv[])
 					cin>>correo;
 					cout<<"Ingrese Numero de dias que trabajara: "<<endl;
 					cin>>dias;
+					interno->setUser(user_n);
+					interno->setCorreo(correo);
+					interno->setPass(pass);
+					interno->setDias(dias);
+
+					interns.push_back(interno);
 				}
 				if (admin_opt == 3)
 				{
-
+					db_supervisor* supervi = new db_supervisor();
 					string sueldo;
 					cout<<"		SUPERVISOR"<<endl;
 					cout<<"Ingrese Nombre de usuario: "<<endl;
@@ -89,12 +96,81 @@ int main(int argc, char const *argv[])
 					cin>>pass;
 					cout<<"Ingrese correo: "<<endl;
 					cin>>correo;
+					supervi->setUser(user_n);
+					supervi->setPass(pass);
+					supervi->setCorreo(correo);
 				}
 			} while (admin_opt!=7);
+
+		
+		}
+		if (interns.size() != 0)
+		{
+			for (int i = 0; i < interns.size(); ++i)
+			{
+				if (interns.at(i)->getUser() == use && interns.at(i)->getPass() == password)
+				{
+					int opcion;
+					do
+					{
+						cout<<"1)Ver Internos\n2)Eliminar Internos\n3)Volver"<<endl;
+						cin>>opcion;
+						if (opcion==1)
+						{
+							for (int i = 0; i < interns.size(); ++i)
+							{
+								cout<<interns.at(i)->getUser()<<endl<<interns.at(i)->getCorreo()<<endl;
+								//cout<<interns.at(i)->getDias()<<endl;
+							}
+						}
+						if (opcion==2)
+						{
+							for (int i = 0; i < interns.size(); ++i)
+							{
+								cout<<i<<"). "<<interns.at(i)->getUser()<<endl;
+							}
+							int borrar;
+							cout<<"Borrar interno en: "<<endl;
+							cin>>borrar;
+							interns.erase(interns.begin() + borrar);
+							cout<<"Interno borrado"<<endl;
+						}
+					} while (opcion != 3);
+				}
+			}
+		}
+		if (supervisors.size() != 0)
+		{
+			for (int i = 0; i < supervisors.size(); ++i)
+			{
+				if (supervisors.at(i)->getUser() == use && supervisors.at(i)->getPass() == password)
+				{
+					db_supervisor* super = dynamic_cast<db_supervisor*>(supervisors.at(i));
+					super->setCont();
+					cout<<"Admin"<<endl;
+					for (int i = 0; i < admins.size(); ++i)
+					{
+						cout<<admins.at(i)->getUser()<<endl<<admins.at(i)->getCorreo()<<endl;
+					}
+					cout<<"Supervisores"<<endl;
+					for (int i = 0; i < supervisors.size(); ++i)
+					{
+						db_supervisor* sp = dynamic_cast<db_supervisor*>(supervisors.at(i));
+						cout<<supervisors.at(i)->getUser()<<endl<<supervisors.at(i)->getCorreo()<<endl;
+						cout<<sp->getSCont()<<endl;
+					}
+					for (int i = 0; i < interns.size(); ++i)
+					{
+						db_intern* inter = dynamic_cast<db_intern*>(interns.at(i));
+						cout<<interns.at(i)->getUser()<<endl<<interns.at(i)->getCorreo()<<endl;
+						cout<<inter->getDias()<<endl;
+					}
+				}
+			}
 		}
 		//db_administrador* adm = dynamic_cast<db_administrador*>()
 		
-		cout<<admins.at(0)->getCorreo()<<endl;
+		//cout<<admins.at(0)->getCorreo()<<endl;
 
 	} while (opt != 0);
 	return 0;
@@ -105,19 +181,30 @@ int main(int argc, char const *argv[])
 void leerTxt(char* txt_name, vector<usuario*>* vec){
 	string user, pass, correo, fecha;
 	string line;
-	ifstream archivo (txt_name);
+	ifstream archivo;
+	archivo.open(txt_name);
 	if (archivo.is_open())
 	{
 		if (txt_name == "Administrador.txt")
 		{
 			db_administrador* admin = new db_administrador();
-			while( archivo >> user >> pass >> correo >> fecha)
+			for (int i = 0; i < 1; ++i)
 			{
+				
+			
+			
+				
+				getline(archivo,user);
+				getline(archivo,pass);
+				getline(archivo,correo);
+				getline(archivo,fecha);
+				//cout<<"Imprimir en metodo"<<endl<<user<<endl<<pass<<endl<<correo<<endl<<fecha<<endl<<"YA";
 				admin->setUser(user);
 				admin->setPass(pass);
 				admin->setCorreo(correo);
 				admin->setFecha(fecha);
 				vec->push_back(admin);
+				//cout<<vec->at(0)->getUser();
 			}
 		}
 		
