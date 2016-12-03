@@ -316,3 +316,7 @@ void leerTxt(char* txt_name, vector<usuario*>* vec){
 		cout<< "El archivo no se pudo abrir.";
 	}
 }
+
+
+
+
