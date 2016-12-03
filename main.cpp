@@ -296,8 +296,6 @@ void leerTxt(char* txt_name, vector<usuario*>* vec){
 			{
 				
 			
-			
-				
 				getline(archivo,user);
 				getline(archivo,pass);
 				getline(archivo,correo);
