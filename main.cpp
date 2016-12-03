@@ -21,22 +21,23 @@ int main(int argc, char const *argv[])
 	vector<usuario*> managers;
 	string user_n, pass, correo;
 	int opt=1;
-	string use;
+	string use = "";
 	char* password;
 
 	leerTxt("Administrador.txt", &admins);
-	cout<<admins.at(0)->getUser()<<endl<< admins.at(0)->getPass()<< endl;
+	cout<<admins.size();
+	cout<< "Admin: " << admins.at(0)->getUser()<<endl <<"Password: " << admins.at(0)->getPass()<< endl;
 	do
 	{
-		cout<<"		LOG IN"<<endl<<"		---------------------"<<endl;
-		cout<<"		Username: "<<endl;
+		cout<<"	LOG IN"<<endl<<"---------------------"<<endl;
+		cout<<"Username: "<<endl;
 		cin >> use;
-		cout<<"		Password: "<<endl;
+		cout<<"Password: "<<endl;
 		cin >> password;
 
 		if((admins.at(0)->getUser() == use) && (admins.at(0)->getPass() == password))
 		{
-			int admin_opt;
+			int admin_opt = 0;
 
 			do
 			{
@@ -44,7 +45,7 @@ int main(int argc, char const *argv[])
 				<<"\n3)Agregar un Supervisor\n4)Eliminar un Manager"
 				<<"\n5)Eliminar un Interno\n6)Eliminar un Supervisor"
 				<<"\n7)Volver"<<endl;
-				cin>> admin_opt;
+				cin >> admin_opt;
 				if (admin_opt == 1)
 				{
 					db_manager* manager = new db_manager();
@@ -339,7 +340,6 @@ void leerTxt(char* txt_name, vector<usuario*>* vec){
 			for (int i = 0; i < 1; ++i)
 			{
 				
-			
 				getline(archivo,user);
 				getline(archivo,pass);
 				getline(archivo,correo);
@@ -350,6 +350,70 @@ void leerTxt(char* txt_name, vector<usuario*>* vec){
 				admin->setCorreo(correo);
 				admin->setFecha(fecha);
 				vec->push_back(admin);
+				//cout<<vec->at(0)->getUser();
+			}
+		}
+		if (txt_name == "Internos.txt")
+		{
+			usuario* intern = new db_intern();
+			db_intern* in = dynamic_cast<db_intern*>(intern);
+			for (int i = 0; i < 1; ++i)
+			{
+				
+			
+				getline(archivo,user);
+				getline(archivo,pass);
+				getline(archivo,correo);
+				getline(archivo,fecha);
+				//cout<<"Imprimir en metodo"<<endl<<user<<endl<<pass<<endl<<correo<<endl<<fecha<<endl<<"YA";
+				intern->setUser(user);
+				intern->setPass(pass);
+				intern->setCorreo(correo);
+				in->setDias(fecha);
+				vec->push_back(intern);
+				//cout<<vec->at(0)->getUser();
+			}
+		}
+		if (txt_name == "Manager.txt")
+		{
+			usuario* mana = new db_manager();
+			db_manager* mng = dynamic_cast<db_manager*>(mana);
+			for (int i = 0; i < 1; ++i)
+			{
+				
+			
+				getline(archivo,user);
+				getline(archivo,pass);
+				getline(archivo,correo);
+				getline(archivo,fecha);
+				//cout<<"Imprimir en metodo"<<endl<<user<<endl<<pass<<endl<<correo<<endl<<fecha<<endl<<"YA";
+				mana->setUser(user);
+				mana->setPass(pass);
+				mana->setCorreo(correo);
+				mng->setSueldo(fecha);
+				vec->push_back(mana);
+				//cout<<vec->at(0)->getUser();
+			}
+		}
+
+		if (txt_name == "Supervisor.txt")
+		{
+			usuario* super = new db_supervisor();
+			db_supervisor* supp = dynamic_cast<db_supervisor*>(super);
+			for (int i = 0; i < 1; ++i)
+			{
+				
+			
+				getline(archivo,user);
+				getline(archivo,pass);
+				getline(archivo,correo);
+				getline(archivo,fecha);
+				//cout<<"Imprimir en metodo"<<endl<<user<<endl<<pass<<endl<<correo<<endl<<fecha<<endl<<"YA";
+				super->setUser(user);
+				super->setPass(pass);
+				super->setCorreo(correo);
+				supp->getSCont();
+				vec->push_back(super);
 				//cout<<vec->at(0)->getUser();
 			}
 		}
