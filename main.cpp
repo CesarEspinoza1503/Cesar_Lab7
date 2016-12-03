@@ -100,6 +100,39 @@ int main(int argc, char const *argv[])
 					supervi->setPass(pass);
 					supervi->setCorreo(correo);
 				}
+				if (admin_opt == 4)
+				{
+					for (int i = 0; i < managers.size(); ++i)
+					{
+						cout<<managers.at(i)->getUser()<<endl<<managers.at(i)->getCorreo()<<endl;
+					}
+					cout<<"Eliminar: "<<endl;
+					int borrar;
+					cin>>borrar;
+					managers.erase(managers.begin() + borrar);
+				}
+				if (admin_opt == 5)
+				{
+					for (int i = 0; i < interns.size(); ++i)
+					{
+						cout<<interns.at(i)->getUser()<<endl<<interns.at(i)->getCorreo()<<endl;
+					}
+					cout<<"Eliminar: "<<endl;
+					int borrar;
+					cin>>borrar;
+					interns.erase(interns.begin() + borrar);
+				}
+				if (admin_opt == 6)
+				{
+					for (int i = 0; i < supervisors.size(); ++i)
+					{
+						cout<<supervisors.at(i)->getUser()<<endl<<supervisors.at(i)->getCorreo()<<endl;
+					}
+					cout<<"Eliminar: "<<endl;
+					int borrar;
+					cin>>borrar;
+					supervisors.erase(supervisors.begin() + borrar);
+				}
 			} while (admin_opt!=7);
 
 		
@@ -159,11 +192,84 @@ int main(int argc, char const *argv[])
 						cout<<supervisors.at(i)->getUser()<<endl<<supervisors.at(i)->getCorreo()<<endl;
 						cout<<sp->getSCont()<<endl;
 					}
+					cout<<"Internos"<<endl;
 					for (int i = 0; i < interns.size(); ++i)
 					{
 						db_intern* inter = dynamic_cast<db_intern*>(interns.at(i));
 						cout<<interns.at(i)->getUser()<<endl<<interns.at(i)->getCorreo()<<endl;
 						cout<<inter->getDias()<<endl;
+					}
+				}
+			}
+		}
+		if (managers.size() != 0)
+		{
+			for (int i = 0; i < managers.size(); ++i)
+			{
+				if (managers.at(i)->getUser() == use && managers.at(i)->getPass() == password)
+				{
+					int opc;
+					cout<<"1)Agregar un Manager \n2)Agregar un Interno"
+					<<"\n3)Agregar un Supervisor\n4)Eliminar un Manager"
+					<<"\n5)Eliminar un Interno\n6)Eliminar un Supervisor"
+					<<"\n7)Volver"<<endl;
+					cin>> opc;
+					if (opc == 1)
+					{
+						db_intern* interno = new db_intern();
+						string dias;
+						cout<<"		INTERNO"<<endl;
+						cout<<"Ingrese Nombre de usuario: "<<endl;
+						cin>>user_n;
+						cout<<"Ingrese contraseña: "<<endl;
+						cin>>pass;
+						cout<<"Ingrese correo: "<<endl;
+						cin>>correo;
+						cout<<"Ingrese Numero de dias que trabajara: "<<endl;
+						cin>>dias;
+						interno->setUser(user_n);
+						interno->setCorreo(correo);
+						interno->setPass(pass);
+						interno->setDias(dias);
+
+						interns.push_back(interno);
+					}
+					if (opc == 2)
+					{
+						db_supervisor* supervi = new db_supervisor();
+						string sueldo;
+						cout<<"		SUPERVISOR"<<endl;
+						cout<<"Ingrese Nombre de usuario: "<<endl;
+						cin>>user_n;
+						cout<<"Ingrese contraseña: "<<endl;
+						cin>>pass;
+						cout<<"Ingrese correo: "<<endl;
+						cin>>correo;
+						supervi->setUser(user_n);
+						supervi->setPass(pass);
+						supervi->setCorreo(correo);
+					}
+					if (opc == 3)
+					{
+						for (int i = 0; i < interns.size(); ++i)
+						{
+							cout<<interns.at(i)->getUser()<<endl<<interns.at(i)->getCorreo()<<endl;
+						}
+						cout<<"Eliminar: "<<endl;
+						int borrar;
+						cin>>borrar;
+						interns.erase(interns.begin() + borrar);
+					}
+					if (opc == 4)
+					{
+						for (int i = 0; i < supervisors.size(); ++i)
+						{
+							cout<<supervisors.at(i)->getUser()<<endl<<supervisors.at(i)->getCorreo()<<endl;
+						}
+						cout<<"Eliminar: "<<endl;
+						int borrar;
+						cin>>borrar;
+						supervisors.erase(supervisors.begin() + borrar);
 					}
 				}
 			}
