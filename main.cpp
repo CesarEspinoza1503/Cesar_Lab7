@@ -282,8 +282,6 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-
-
 void leerTxt(char* txt_name, vector<usuario*>* vec){
 	string user, pass, correo, fecha;
 	string line;
